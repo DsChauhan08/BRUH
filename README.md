@@ -11,7 +11,6 @@ Production-ready anonymous feedback platform with end-to-end encryption, built w
 - **Moderation**: Keyword blocklist + AI-ready moderation hooks
 - **Rate Limiting**: Atomic PostgreSQL-based rate limiting
 - **Analytics**: Message volume, unique visitors, device tracking
-- **Push Notifications**: FCM for Android + Web Push API
 
 ## 📋 Prerequisites
 
@@ -78,9 +77,6 @@ PAYTM_ENVIRONMENT=staging
 
 # Security
 RATE_LIMIT_SALT=$(openssl rand -base64 32)
-
-# Firebase (for push notifications)
-FCM_SERVER_KEY=your-fcm-key
 ``` 4. Set Up Payment Webhooks
 
 **PayPal:**

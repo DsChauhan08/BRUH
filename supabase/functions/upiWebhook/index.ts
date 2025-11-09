@@ -56,7 +56,7 @@ async function verifyPaytmChecksum(
   }
 }
 
-serve(async (req) => {
+serve(async (req: Request) => {
   if (req.method === 'OPTIONS') {
     return new Response('ok', { headers: corsHeaders });
   }
@@ -64,7 +64,6 @@ serve(async (req) => {
   try {
     const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
     const supabaseServiceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
-    const upiProvider = Deno.env.get('UPI_PROVIDER') || 'paytm';
     const merchantKey = Deno.env.get('UPI_PROVIDER_KEY')!;
 
     const supabase = createClient(supabaseUrl, supabaseServiceKey);

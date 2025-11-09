@@ -2,6 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   transpilePackages: ['@bruh/ui', '@bruh/crypto', '@bruh/db'],
+  output: 'standalone',
   experimental: {
     serverActions: {
       bodySizeLimit: '2mb',
