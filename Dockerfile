@@ -2,23 +2,21 @@
 FROM node:18-alpine AS base
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
-
-# Install pnpm
 RUN npm install -g pnpm@8
 
-# Install dependencies
-FROM base AS deps
+# Build stage
+FROM base AS builder
+WORKDIR /app
+
+# Copy workspace files
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 COPY apps/ ./apps/
 COPY packages/ ./packages/
+
+# Install all dependencies
 RUN pnpm install --frozen-lockfile
 
-# Build packages and app
-FROM base AS builder
-COPY --from=deps /app/node_modules ./node_modules
-COPY . .
-
-# Build shared packages first
+# Build packages
 RUN pnpm --filter @bruh/crypto build
 RUN pnpm --filter @bruh/db build
 RUN pnpm --filter @bruh/ui build
