@@ -8,8 +8,8 @@ RUN npm install -g pnpm@8
 FROM base AS builder
 WORKDIR /app
 
-# Copy workspace files
-COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+# Copy workspace configuration files
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml tsconfig.json ./
 COPY apps/ ./apps/
 COPY packages/ ./packages/
 

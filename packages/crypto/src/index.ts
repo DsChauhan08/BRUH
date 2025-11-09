@@ -1,4 +1,4 @@
-import sodium from 'libsodium-wrappers';
+import * as sodium from 'libsodium-wrappers';
 
 export interface KeyPair {
   publicKey: string; // base64
